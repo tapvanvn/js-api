@@ -230,8 +230,6 @@ function buildContext (dom) {
 
     var ctx = {}
 
-    
-
     var run = (node, fn) => {
 
         fn(node);
@@ -240,7 +238,7 @@ function buildContext (dom) {
             
             run(n, fn)
         })
-    },
+    }
 
     var runChildren = (node, fn)=> {
 
@@ -248,7 +246,7 @@ function buildContext (dom) {
 
             Pure.dom.run(n, fn)
         })
-    },
+    }
 
     var findRole = (node)=>{
 
@@ -265,7 +263,6 @@ function buildContext (dom) {
     runChildren(dom, findRole)
     return ctx
 }
-
 
 window.apiManager = apiManager
 window.api = apiManager.api
