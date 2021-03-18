@@ -217,7 +217,7 @@ class ApiManager {
         
         if (object !== this.api && last != "") {
 
-            last_object[last] = new ApiClass(endpoint, form_class)
+            last_object[last] = new Api(endpoint, form_class)
         }else {
             console.log("cannot register", endpoint)
         }
