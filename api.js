@@ -244,7 +244,7 @@ function buildContext (dom) {
 
         node.childNodes.forEach((n)=>{
 
-            Pure.dom.run(n, fn)
+            run(n, fn)
         })
     }
 
