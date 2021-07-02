@@ -102,7 +102,7 @@ class Api {
         }
     }
 
-    request (nct_context, indexes, callback){
+    request (domain, nct_context, indexes, callback){
 
         var self = this 
         var data = {}
@@ -110,7 +110,7 @@ class Api {
 
         var xmlhttp = new XMLHttpRequest();
 
-        var path = self.endpoint.buildPath(indexes)
+        var path = domain + self.endpoint.buildPath(indexes)
 
         var is_process = true
 
@@ -190,9 +190,11 @@ class ApiManager {
         
     constructor(){
         this.api = {}
+        this.url = ""
     }
-    
-
+    setURL(url){
+        this.url = url
+    }
     register (name, endpoint, form_class){
 
         var pragments = name.split(".")
