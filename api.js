@@ -127,10 +127,7 @@ class Api {
                     data = form.data
                 }
 
-                Object.keys(form.headers).forEach(key=>{
-
-                    xmlhttp.setRequestHeader(key, form.headers[key])
-                })
+                
                 if (form.params.length > 0) {
                     path += "?"
                     var i = 0
@@ -174,6 +171,11 @@ class Api {
         };
 
         xmlhttp.open(method, path, true);
+
+        Object.keys(form.headers).forEach(key=>{
+
+            xmlhttp.setRequestHeader(key, form.headers[key])
+        })
 
         if (method != 'GET' && typeof data == 'object') {
 
@@ -220,7 +222,9 @@ class ApiManager {
         if (object !== this.api && last != "") {
 
             last_object[last] = new Api(endpoint, form_class)
-        }else {
+
+        } else {
+
             console.log("cannot register", endpoint)
         }
     }
