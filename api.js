@@ -157,7 +157,9 @@ class Api {
         xmlhttp.onreadystatechange = function() {
 
             if (this.readyState == 4 ) {
+                
                 if (this.statusCode == 301) {
+
                     window.location.href = this.location
                     return
                 }
@@ -169,8 +171,15 @@ class Api {
                 }
             }
         };
+        try {
 
-        xmlhttp.open(method, path, true);
+            xmlhttp.open(method, path, true);
+
+        } catch(ex){
+            if (typeof callback === "function"){
+                callback(null)
+            }
+        }
 
         Object.keys(form.headers).forEach(key=>{
 
