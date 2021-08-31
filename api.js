@@ -183,7 +183,7 @@ class Api {
 
         Object.keys(form.headers).forEach(key=>{
 
-            xmlhttp.setRequestHeader(key, form.headers[key])
+            xmlhttp.setRequestHeader(key, encodeURIComponent(form.headers[key]))
         })
 
         if (method != 'GET' && typeof data == 'object') {
