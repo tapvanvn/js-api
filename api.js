@@ -186,9 +186,16 @@ class Api {
             xmlhttp.setRequestHeader(key, encodeURIComponent(form.headers[key]))
         })
 
-        if (method != 'GET' && typeof data == 'object') {
+        if (method != 'GET' ) {
+            if (data instanceof FormData) {
+                //xmlhttp.setRequestHeader("Content-Type", "multipart/form-data")
+                xmlhttp.send(data)
+            } else if (typeof data == 'object'){
 
-            xmlhttp.send(JSON.stringify(data));
+                xmlhttp.send(JSON.stringify(data));
+            } else {
+                xmlhttp.send()
+            }
 
         } else {
 
